@@ -3,9 +3,6 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import { HashRouter } from "react-router-dom";
 
-// -- Redux
-import { connect } from "react-redux";
-
 // -- Custom Components
 import LayoutComponent from "./components/Layout/Layout";
 import ErrorPage from "./pages/error/ErrorPage";
