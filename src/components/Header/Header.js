@@ -23,29 +23,17 @@ import { closeSidebar, openSidebar } from "../../actions/navigation";
 import MenuIcon from "../Icons/HeaderIcons/MenuIcon";
 import SearchBarIcon from "../Icons/HeaderIcons/SearchBarIcon";
 import SearchIcon from "../Icons/HeaderIcons/SearchIcon";
-
-import ProfileIcon from "../../assets/navbarMenus/pfofileIcons/ProfileIcon";
-import MessagesIcon from "../../assets/navbarMenus/pfofileIcons/MessagesIcon";
-import TasksIcon from "../../assets/navbarMenus/pfofileIcons/TasksIcon";
-
-import logoutIcon from "../../assets/navbarMenus/pfofileIcons/logoutOutlined.svg";
 import basketIcon from "../../assets/navbarMenus/basketIcon.svg";
 import calendarIcon from "../../assets/navbarMenus/calendarIcon.svg";
 import envelopeIcon from "../../assets/navbarMenus/envelopeIcon.svg";
 import mariaImage from "../../assets/navbarMenus/mariaImage.jpg";
 import notificationImage from "../../assets/navbarMenus/notificationImage.jpg";
-import userImg from "../../assets/user.svg";
 
 import s from "./Header.module.scss";
 import "animate.css";
 
 const Header = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
-
-  const toggleNotifications = () => {
-    setNotificationsOpen(!notificationsOpen);
-  }
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
