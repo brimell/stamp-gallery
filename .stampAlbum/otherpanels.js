@@ -118,16 +118,8 @@ class Panels {
     $('#propertiesClose').click(function (e) {
       $('.propertiesPanel').css ('display','none');
     });
-
-
-
-
-
   }
-
-
-
-
+  
   compareByFaceValue( a, b ) {
     if ( a.FaceValue < b.FaceValue ){
       return -1;
