@@ -11,10 +11,6 @@ import {
   UncontrolledDropdown
 } from "reactstrap";
 import Widget from "../../components/Widget/Widget.js";
-import gymIcon from "../../assets/dashboard/gymIcon.svg";
-import therapyIcon from "../../assets/dashboard/therapyIcon.svg";
-import user from "../../assets/user.svg";
-import statsPie from "../../assets/dashboard/statsPie.svg";
 
 import s from "./Dashboard.module.scss";
 
@@ -26,7 +22,7 @@ const Dashboard = () => {
   //     .map((checkbox, index) => index === id ? !checkbox : checkbox ))
   // }
 
-  const books = [['A1','500'],['B1','200'],['C1','300']];
+  const books = [['A','500'],['B','200'],['C','300']];
   const totalStamps = 1000
   const flags = [
     []
@@ -145,13 +141,16 @@ const Dashboard = () => {
         </Col>
         <Col className="mt-4 mt-lg-0 pl-grid-col" xs={12} lg={4}>
           <Widget className="widget-p-lg">
-            <div className="d-flex">
-              <img className={s.image} src={user} alt="..." />
-              <div className={s.userInfo}>
-                <p className="headline-3">name</p>
-                <p className="body-3 muted">info</p>
-              </div>
-            </div>
+          {flags.map((flag) =>
+                  <div key={uuidv4()} className="d-flex">
+                    <img className={s.image} src='' alt="..." />
+                    <div className={s.userInfo}>
+                      <p className="headline-3">name</p>
+                      <p className="body-3 muted">info</p>
+                    </div>
+                  </div>
+                )}
+            
           </Widget>
         </Col>
       </Row>

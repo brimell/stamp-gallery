@@ -48,13 +48,13 @@ const Sidebar = (props) => {
           index="books"
           childrenLinks={[
             {
-              header: 'A1', link: '/books/a1',
+              header: 'A', link: '/books/a',
             },
             {
-              header: 'B1', link: '/books/b1',
+              header: 'B', link: '/books/b',
             },
             {
-              header: 'C1', link: '/books/c1',
+              header: 'C', link: '/books/c',
             },
           ]}
         />
