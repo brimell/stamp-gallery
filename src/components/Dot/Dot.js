@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import s from "./Dot.module.scss";
 
-export default function Dot({ size = "medium", color = "#4D53E0", style }) {
+export default function Dot({ size = "medium", color = "#4D53E0", style }) { // bullet points
   return (
     <div
       className={cx(s.dotBase, {
