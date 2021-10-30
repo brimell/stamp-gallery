@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import $ from 'jquery';
 import {
   Col,
   Row,
@@ -24,9 +25,44 @@ const Dashboard = () => {
 
   const books = [['A','500'],['B','200'],['C','300']];
   const totalStamps = 1000
-  const flags = [
-    []
-  ]
+  var flags = []
+
+  function renderCountryList(data) {
+    var self = this;
+    const TARGET_FLAG_SIZE = 60;
+    const SOURCE_FLAG_SIZE = 32;
+    const imgRatio = TARGET_FLAG_SIZE/SOURCE_FLAG_SIZE;
+    const backgroundSize = 640 * imgRatio;
+    data.forEach ((element, i) => {
+      var style = 'background-image: url(https://www.rimell.cc/stampAlbum/flags/' + element.flag_image + ');';
+      if (element.flag_image === 'flags32y.png') {
+        style = style + " background-position: "+(parseInt(element.image_x)*imgRatio)+"px " + (parseInt(element.image_y)*imgRatio)+"px; background-size: "+backgroundSize+"px; ";
+      }
+      var stampCount = self.model.stampsCount[element.country];
+      flags.append([element,element.country,element.count,stampCount]);
+    });
+    // $('.flag_item').click(function (e) {
+    //   //var data = self.model.getListOfRegionsByCountry(e.target.id)
+    //   self.backQueue.push(function() {
+    //     self.renderCountryList(data);
+    //   });
+    //   self.getSeriesByCountry(e.target.id);
+    //   //self.renderStampList(data);
+    // })
+  }
+
+  function getKnownCountries() {
+    var self = this;
+    $.ajax({
+      dataType: "json",
+      type: "GET",
+      url: self.URL_PATH + 'getKnownCountries.php',
+      async: true,
+      success: function (data) {
+        self.renderCountryList(data);
+      }
+    });
+  }
 
   return (
     <div>

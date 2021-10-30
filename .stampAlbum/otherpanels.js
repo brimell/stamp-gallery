@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 class Panels {
 
 
@@ -340,13 +338,13 @@ class Panels {
     const SOURCE_FLAG_SIZE = 32;
     const imgRatio = TARGET_FLAG_SIZE/SOURCE_FLAG_SIZE;
     const backgroundSize = 640 * imgRatio;
-    data.forEach ((el, i) => {
-      var style = 'background-image: url(https://www.rimell.cc/stampAlbum/flags/' + el.flag_image + ');';
-      if (el.flag_image == 'flags32y.png') {
-        style = style + " background-position: "+(parseInt(el.image_x)*imgRatio)+"px " + (parseInt(el.image_y)*imgRatio)+"px; background-size: "+backgroundSize+"px; ";
+    data.forEach ((element, i) => {
+      var style = 'background-image: url(https://www.rimell.cc/stampAlbum/flags/' + element.flag_image + ');';
+      if (element.flag_image == 'flags32y.png') {
+        style = style + " background-position: "+(parseInt(element.image_x)*imgRatio)+"px " + (parseInt(element.image_y)*imgRatio)+"px; background-size: "+backgroundSize+"px; ";
       }
-      var stampCount = self.model.stampsCount[el.country];
-      $('.countryList').append(`<div class="country"><div class="flag_item" id="${el.id}" draggable="false" style="${style}"></div><div>${el.country} (${el.count} / ${stampCount})</div></div>`);
+      var stampCount = self.model.stampsCount[element.country];
+      $('.countryList').append(`<div class="country"><div class="flag_item" id="${element.id}" draggable="false" style="${style}"></div><div>${element.country} (${element.count} / ${stampCount})</div></div>`);
     });
     $('.flag_item').click(function (e) {
       //var data = self.model.getListOfRegionsByCountry(e.target.id)
