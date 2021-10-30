@@ -57,7 +57,7 @@ const LinksGroup = (props) => {
       <li>
         <NavLink
           to={props.link}
-          activeClassName={s.headerLinkActive}
+          activeClassName={s.subHeaderLinkActive}
           onClick={(e) => {
             if (props.link.includes('menu')) {
               e.preventDefault();
@@ -65,7 +65,7 @@ const LinksGroup = (props) => {
           }}
           exact={exact}
         >
-          {<i className="fa fa-circle text-primary mr-2"/>} {props.header}
+          {<i className="fa fa-circle text-primary mr-2" style={{marginRight: "5px"}} />} {props.header}
         </NavLink>
       </li>
     );

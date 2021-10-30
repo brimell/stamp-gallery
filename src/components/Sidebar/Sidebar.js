@@ -7,6 +7,7 @@ import s from "./Sidebar.module.scss";
 import LinksGroup from "./LinksGroup/LinksGroup.js";
 import { changeActiveSidebarItem } from "../../actions/navigation.js";
 import cn from "classnames";
+import * as Icons from "@material-ui/icons";
 
 const Sidebar = (props) => {
 
@@ -36,7 +37,6 @@ const Sidebar = (props) => {
           iconName={<i className={'eva eva-home-outline'}/>}
           link="/dashboard"
           index="dashboard"
-          badge="9"
         />
         <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
@@ -58,7 +58,25 @@ const Sidebar = (props) => {
             },
           ]}
         />
-        <h5 className={s.navTitle}>other</h5>
+        <LinksGroup
+          onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
+          activeItem={props.activeItem}
+          header="Countries"
+          isHeader
+          iconName={<Icons.Flag />}
+          link="/countries"
+          index="countries"
+        />
+        <LinksGroup
+          onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
+          activeItem={props.activeItem}
+          header="Globe"
+          isHeader
+          iconName={<i className={'eva eva-globe-outline'}/>}
+          link="/globe"
+          index="globe"
+        />
+        {/* <h5 className={s.navTitle}>other</h5>
         <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
           activeItem={props.activeItem}
@@ -105,7 +123,7 @@ const Sidebar = (props) => {
           iconName={<i className={'eva eva-bell-outline'}/>}
           link="/notifications"
           index="notifications"
-        />
+        /> */}
 
       </ul>
       {/* <div className="bg-widget d-flex mt-auto ml-1">

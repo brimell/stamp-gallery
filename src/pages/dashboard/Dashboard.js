@@ -1,6 +1,8 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 // import $ from 'jquery';
+import { Link } from "react-router-dom";
+
 import {
   Col,
   Row,
@@ -23,7 +25,7 @@ const Dashboard = () => {
   //     .map((checkbox, index) => index === id ? !checkbox : checkbox ))
   // }
 
-  const books = [['A','500'],['B','200'],['C','300']];
+  const books = [['A','500','/books/a'],['B','200','/books/b'],['C','300','/books/c']];
   const totalStamps = 1000
   // let flags = []
 
@@ -286,6 +288,7 @@ const Dashboard = () => {
                   <div className="headline-3 d-flex align-items-center">Books</div>
                 </div>
                 {books.map((book) =>
+                  <Link to={'/books/'+ book[0]}>
                   <div key={uuidv4()} className={`mt-4 ${s.widgetBlock}`}>
                     <div className={s.widgetBody}>
                       <div className="d-flex">
@@ -298,6 +301,7 @@ const Dashboard = () => {
                       <div className="body-3 muted">{book[1]} stamps</div>
                     </div>
                   </div>
+                  </Link>
                 )}
               </Widget>
             </Col>

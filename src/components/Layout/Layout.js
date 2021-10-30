@@ -18,9 +18,12 @@ import Tables from "../../pages/tables/Tables";
 import Charts from "../../pages/uielements/charts/Charts";
 import Icons from "../../pages/uielements/icons/IconsPage";
 import Maps from "../../pages/uielements/maps/google/GoogleMapPage";
-// import A from "../../pages/a/A";
-// import B from "../../pages/b/B";
-// import C from "../../pages/c/C";
+import BookA from "../../pages/bookA/BookA";
+import BookB from "../../pages/bookB/BookB";
+import BookC from "../../pages/bookC/BookC";
+import Countries from "../../pages/countries/Countries";
+import Globe from "../../pages/globe/Globe";
+
 
 
 // -- Component Styles
@@ -44,9 +47,12 @@ const Layout = (props) => {
             <Route path="/ui-elements/charts" exact component={Charts} />
             <Route path="/ui-elements/icons" exact component={Icons} />
             <Route path="/ui-elements/maps" exact component={Maps} />
-            {/* <Route path="/books/a" exact component={A} />
-            <Route path="/books/b" exact component={B} />
-            <Route path="/books/c" exact component={C} /> */}
+            <Route path="/books/a" exact component={BookA} />
+            <Route path="/books/b" exact component={BookB} />
+            <Route path="/books/c" exact component={BookC} />
+            <Route path="/countries" exact component={Countries} />
+            <Route path="/globe" exact component={Globe} />
+
             <Route path='*' exact render={() => <Redirect to="/error" />} />
           </Switch>
         </main>

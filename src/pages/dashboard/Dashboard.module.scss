@@ -110,6 +110,11 @@
   max-height: 80vh;
 }
 
+a {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
 ::-webkit-scrollbar{
 	width: 10px;
 }
