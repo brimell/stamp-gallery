@@ -18,6 +18,10 @@ import Tables from "../../pages/tables/Tables";
 import Charts from "../../pages/uielements/charts/Charts";
 import Icons from "../../pages/uielements/icons/IconsPage";
 import Maps from "../../pages/uielements/maps/google/GoogleMapPage";
+// import A1 from "../../pages/a1/A1";
+// import B1 from "../../pages/b1/B1";
+// import C1 from "../../pages/c1/C1";
+
 
 // -- Component Styles
 import s from "./Layout.module.scss";
@@ -40,6 +44,9 @@ const Layout = (props) => {
             <Route path="/ui-elements/charts" exact component={Charts} />
             <Route path="/ui-elements/icons" exact component={Icons} />
             <Route path="/ui-elements/maps" exact component={Maps} />
+            {/* <Route path="/books/a1" exact component={A1} />
+            <Route path="/books/b1" exact component={B1} />
+            <Route path="/books/c1" exact component={C1} /> */}
             <Route path='*' exact render={() => <Redirect to="/error" />} />
           </Switch>
         </main>

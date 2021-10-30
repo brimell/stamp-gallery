@@ -38,24 +38,44 @@ const Sidebar = (props) => {
           index="dashboard"
           badge="9"
         />
-        {/* <h5 className={s.navTitle}>title</h5> */}
         <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
           activeItem={props.activeItem}
           header="Books"
           isHeader
           iconName={<i className={'eva eva-book-outline'}/>}
+          link="/books"
+          index="books"
+          childrenLinks={[
+            {
+              header: 'A1', link: '/books/a1',
+            },
+            {
+              header: 'B1', link: '/books/b1',
+            },
+            {
+              header: 'C1', link: '/books/c1',
+            },
+          ]}
+        />
+        <h5 className={s.navTitle}>other</h5>
+        <LinksGroup
+          onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
+          activeItem={props.activeItem}
+          header="UI"
+          isHeader
+          iconName={<i className={'eva eva-cube-outline'}/>}
           link="/uielements"
           index="uielements"
           childrenLinks={[
             {
-              header: 'A1', link: '/ui-elements/charts',
+              header: 'Charts', link: '/ui-elements/charts',
             },
             {
-              header: 'B1', link: '/ui-elements/icons',
+              header: 'Icons', link: '/ui-elements/icons',
             },
             {
-              header: 'C1', link: '/ui-elements/maps',
+              header: 'Maps', link: '/ui-elements/maps',
             },
           ]}
         />

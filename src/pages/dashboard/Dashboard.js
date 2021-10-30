@@ -46,35 +46,14 @@ const Dashboard = () => {
             <Col className="mb-4 mb-md-0" xs={12} md={6}>
               <Widget className="">
                 <div className="d-flex justify-content-between widget-p-md">
-                  <div className="headline-3 d-flex align-items-center">Your activity</div>
-                  <UncontrolledDropdown>
-                    <DropdownToggle caret>
-                      &nbsp; Weekly &nbsp;
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>Daily</DropdownItem>
-                      <DropdownItem>Weekly</DropdownItem>
-                      <DropdownItem>Monthly</DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
+                  <div className="headline-3 d-flex align-items-center">Books</div>
                 </div>
-                <ApexActivityChart className="pb-4"/>
               </Widget>
             </Col>
             <Col xs={12} md={6}>
               <Widget className="widget-p-md">
                 <div className="d-flex justify-content-between">
-                  <div className="headline-3 d-flex align-items-center">Your meals</div>
-                  <UncontrolledDropdown>
-                    <DropdownToggle caret>
-                      &nbsp; Weekly &nbsp;
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>Daily</DropdownItem>
-                      <DropdownItem>Weekly</DropdownItem>
-                      <DropdownItem>Monthly</DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
+                  <div className="headline-3 d-flex align-items-center">Globe</div>
                 </div>
                 {meals.map((meal) =>
                   <div key={uuidv4()} className={`mt-4 ${s.widgetBlock}`}>
