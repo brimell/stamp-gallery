@@ -10,7 +10,7 @@ const StampGallery = () => {
   const carousel_images = [];
   const images = []
   var window_location = window.location.href
-  var curr_book = window_location.substring(window_location.indexOf("/books/") + 1).replace('books/','');
+  var curr_book = window_location.substring(window_location.indexOf("/books/") + 1).replace('books/','').toLowerCase();
   // add all images in specified book
   
   if (curr_book === 'a') {
