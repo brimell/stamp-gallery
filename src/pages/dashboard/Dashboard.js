@@ -388,7 +388,7 @@ const Dashboard = () => {
         </Col>
         <Col className="mt-4 mt-lg-0 pl-grid-col" xs={12} lg={4}>
           <Widget className="widget-p-lg">
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between" style={{marginBottom: "30px"}}>
             <div className="headline-3 d-flex align-items-center">Country</div>
           </div>
           <div className={s.countryContainer}>
