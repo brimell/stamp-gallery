@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content=" initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Stamps</title>
+  <link rel="stylesheet" href="css/carousel.css">
+  <link rel="stylesheet" href="css/redmond/jquery-ui-1.10.4.custom.min.css">
+  
+  <script type="text/javascript" src="js/ext/jquery-2.1.1.js"></script>
+  <script src="js/ext/jquery-ui-1.10.4.custom.js"></script>
+  <script src="js/ext/jquery.ui.touch-punch.min.js"></script>
+  <script src="js/ext/amcharts4/core.js"></script>
+  <script src="js/ext/amcharts4/maps.js"></script>
+  <script src="js/ext/amcharts4/themes/animated.js"></script>
+  <script src="js/ext/amcharts4/geodata/worldLow.js"></script>
+  <script type="text/javascript" src="stampmodel.js"></script>
+  <script type="text/javascript" src="carousel.js"></script>
+</head>
+
+<body>
+  <div class="outer">
+    <div class="gallery">
+      <div class="gallery-container">
+       
+      </div>
+
+    </div>
+    <div class="propertiesPanel">
+      <div id="propertiesClose">X</div>
+      <div id="propertiesHeader">
+        <span id="propertiesStampId"></span>
+        <span id="propertiesOptions">
+          <form><input id="fetchColnectImages" type="checkbox" name="fetchColnectImages" value="true">Fetch Colnect Images <input id="changeSelection" type="button"
+              name="action" value="Select"></form>
+        </span>
+      </div>
+      <div id="propertiesBody" class="propertiesBody"></div>
+    </div>
+  </div>
+  <div id="mainPanel" class="countryList"></div>
+  <div class="menu">
+    <span id="albumA"  ><img class="menu_item" draggable="false"  src="img/carousel.svg" /></span>
+    <span id="albumB"  ><img class="menu_item" draggable="false"  src="img/carousel.svg" /></span>
+    <span id="countyListOption"  ><img class="menu_item" draggable="false"  src="img/international-icon.svg"/></span>
+    <span id="globe"  ><img class="menu_item" draggable="false"  src="img/international-icon.svg"/></span>
+    <span id="statusData"  ></span>
+</div>
+</body>
+
+</html>

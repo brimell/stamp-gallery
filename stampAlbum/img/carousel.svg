@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="512pt"
+   viewBox="0 0 512 512"
+   width="512pt"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="carousel.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1417"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="1.0440874"
+     inkscape:cx="314.67095"
+     inkscape:cy="289.42746"
+     inkscape:window-x="2552"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke-width:19.8425"
+     id="rect837-7"
+     width="100.06348"
+     height="319.49203"
+     x="393.90475"
+     y="95.74604"
+     ry="1.8526051" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke-width:19.8425"
+     id="rect837"
+     width="100.06348"
+     height="319.49203"
+     x="22.857141"
+     y="97.523811"
+     ry="1.852605" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke-width:19.8425"
+     id="rect835"
+     width="250.92064"
+     height="447.99997"
+     x="124.95238"
+     y="31.492064"
+     ry="1.852605" />
+  <path
+     d="m452 70h-40v-10c0-33.085938-26.914062-60-60-60h-192c-33.085938 0-60 26.914062-60 60v10h-40c-33.085938 0-60 26.914062-60 60v251c0 33.085938 26.914062 60 60 60h40v11c0 33.085938 26.914062 60 60 60h192c33.085938 0 60-26.914062 60-60v-11h40c33.085938 0 60-26.914062 60-60v-251c0-33.085938-26.914062-60-60-60zm-392 331c-11.027344 0-20-8.972656-20-20v-251c0-11.027344 8.972656-20 20-20h40v291zm312 51c0 11.027344-8.972656 20-20 20h-192c-11.027344 0-20-8.972656-20-20v-392c0-11.027344 8.972656-20 20-20h192c11.027344 0 20 8.972656 20 20zm100-71c0 11.027344-8.972656 20-20 20h-40v-291h40c11.027344 0 20 8.972656 20 20zm0 0"
+     id="path2"
+     style="fill:#000000;fill-opacity:1" />
+</svg>
