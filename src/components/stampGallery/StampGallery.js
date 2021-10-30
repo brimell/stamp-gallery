@@ -2,24 +2,21 @@ import React from 'react';
 import './imageGallery.scss'
 import ImageGallery from 'react-image-gallery';
 
-const images = [
-  {
-    original: 'https://picsum.photos/id/1018/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1018/1000/600/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-  },
-];
+
+const carousel_images = [];
+const images = []
+
+for (let i = 1, len = 109; i < len; i++) { // add all images in book A
+  images.push('https://rimell.cc/stampAlbum/img/A' + i + '.jpg')
+}
+
+for (let i = 0, len = images.length; i < len; i++) { // format images in carousel_images format (dictionary)
+  carousel_images.push({'original': images[i], 'thumbnail': images[i]})
+}
 
 class StampGallery extends React.Component {
   render() {
-    return <ImageGallery items={images} showFullScreenButton={false} showIndex={true} slideDuration={200} />;
+    return <ImageGallery items={carousel_images} showFullScreenButton={false} showIndex={true} slideDuration={100} showPlayButton={false} />;
   }
 }
 
