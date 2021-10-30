@@ -30,7 +30,7 @@ class SwiperClass {
         });
         $('.closebtn').click(function () {
             self.closeNav();
-});
+    });
         
     if(window.location.hash) {
       this.initalRenderContainer(window.location.hash.substring(1, 10));
