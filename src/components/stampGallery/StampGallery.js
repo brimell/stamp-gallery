@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import './imageGallery.scss'
 import ImageGallery from 'react-image-gallery';
 
 
-
+function lazyLoadingCheck() {
+  if (localStorage.getItem('lazy_loading') === true) {
+    return true
+  } else {
+    localStorage.setItem('lazy_loading', false)
+    return false
+  }
+}
 
 const StampGallery = () => {
 
@@ -32,7 +39,7 @@ const StampGallery = () => {
     carousel_images.push({'original': images[i], 'thumbnail': images[i]})
   }
   return (
-    <ImageGallery items={carousel_images} showFullScreenButton={false} showIndex={true} slideDuration={100} showPlayButton={false} />
+    <ImageGallery items={carousel_images} showFullScreenButton={false} showIndex={true} slideDuration={100} showPlayButton={false} lazy_loading={lazyLoadingCheck()} />
   )
 }
 

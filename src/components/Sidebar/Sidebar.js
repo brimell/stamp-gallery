@@ -76,7 +76,7 @@ const Sidebar = (props) => {
           link="/globe"
           index="globe"
         />
-        {/* <h5 className={s.navTitle}>other</h5>
+        <h5 className={s.navTitle}>other</h5>
         <LinksGroup
           onActiveSidebarItemChange={activeItem => props.dispatch(changeActiveSidebarItem(activeItem))}
           activeItem={props.activeItem}
@@ -123,7 +123,7 @@ const Sidebar = (props) => {
           iconName={<i className={'eva eva-bell-outline'}/>}
           link="/notifications"
           index="notifications"
-        /> */}
+        />
 
       </ul>
       {/* <div className="bg-widget d-flex mt-auto ml-1">
