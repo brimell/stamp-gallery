@@ -136,48 +136,48 @@ class StampData {
   getListOfRegionsByCountry(countryid) {
     return this.albumRegionsByCountryId.get(countryid);
   }
-  getStampsPage(pageid) {
-    return this.stampsByPage.get(pageid);
-  }
+  // getStampsPage(pageid) {
+  //   return this.stampsByPage.get(pageid);
+  // }
 
-  canMoveRight() {
-    return this.currentPage < this.pagesList.length;
-  }
+  // canMoveRight() {
+  //   return this.currentPage < this.pagesList.length;
+  // }
 
-  canMoveLeft() {
-      return this.currentPage > 0;
-  }
+  // canMoveLeft() {
+  //     return this.currentPage > 0;
+  // }
 
-  getCurrentPage() {
-      return this.pagesList[this.currentPage];
-  }
+  // getCurrentPage() {
+  //     return this.pagesList[this.currentPage];
+  // }
   
-  getNextTitle() {
-    var nextImgTitle = "";
-    if (this.currentPage  < this.pagesList.length+3) {
-      nextImgTitle = this.pagesList[this.currentPage +3 ];
-      this.currentPage++;
-    } else if (this.currentPage  === this.pagesList.length) {
-      nextImgTitle = this.pagesList[0];
-      this.currentPage = 0;
-    } else {
-      nextImgTitle = this.pagesList[1];
-      this.currentPage = 1;
-    }
-    return nextImgTitle;
-  }
+  // getNextTitle() {
+  //   var nextImgTitle = "";
+  //   if (this.currentPage  < this.pagesList.length+3) {
+  //     nextImgTitle = this.pagesList[this.currentPage +3 ];
+  //     this.currentPage++;
+  //   } else if (this.currentPage  === this.pagesList.length) {
+  //     nextImgTitle = this.pagesList[0];
+  //     this.currentPage = 0;
+  //   } else {
+  //     nextImgTitle = this.pagesList[1];
+  //     this.currentPage = 1;
+  //   }
+  //   return nextImgTitle;
+  // }
 
-  getPrevTitle() {
-    var nextImgTitle = "";
-    if (this.currentPage > 2) {
-      nextImgTitle = this.pagesList[this.currentPage -3];
-      this.currentPage--;
-    } else {
-      nextImgTitle = "A1";
-      this.currentPage--;
-    }
-    return nextImgTitle;
-  }
+  // getPrevTitle() {
+  //   var nextImgTitle = "";
+  //   if (this.currentPage > 2) {
+  //     nextImgTitle = this.pagesList[this.currentPage -3];
+  //     this.currentPage--;
+  //   } else {
+  //     nextImgTitle = "A1";
+  //     this.currentPage--;
+  //   }
+  //   return nextImgTitle;
+  // }
   getStampsCount() {
     var self = this;
     $.ajax({
