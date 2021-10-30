@@ -1,20 +1,7 @@
-import React, { useState } from "react";
+import React, { lazy } from 'react';
 import './imageGallery.scss'
 import ImageGallery from 'react-image-gallery';
 import $ from 'jquery';
-import LazyLoading from './lazyLoading/LazyLoading'
-import {
-  Col,
-  Row,
-  // Button,
-  // DropdownToggle,
-  // DropdownMenu,
-  // DropdownItem,
-  // UncontrolledDropdown
-} from "reactstrap";
-import Widget from "../Widget/Widget";
-import s from "./lazyLoading/LazyLoading.module.scss"
-
 
 function lazyLoadingCheck() {
   if (localStorage.getItem('lazy_loading') === true) {
@@ -295,9 +282,72 @@ class Panels {
     //     $(this).css("display","none");
     // });
     
+    $('#countyListOption').click(function () {self.getKnownCountries()});
+  }
+  
+  compareByFaceValue( a, b ) {
+    if ( a.FaceValue < b.FaceValue ){
+      return -1;
+    }
+    if ( a.FaceValue > b.FaceValue ){
+      return 1;
+    }
+    return 0;
   }
 
-  renderStampPanel(self, albumPageRegionId, stampid, pageid) { // info panel
+  renderFindStampPanel(albumPageRegionId, pageid) {
+    const self = this;
+    $('#propertiesBody').empty();
+    var stampsData = this.model.getStampsPage(pageid);
+
+    stampsData.sort(this.compareByFaceValue);
+    
+    var regionData = this.model.getDataForRegionId(albumPageRegionId);
+    $('#propertiesBody').append('<div class="nonescrollable"></div>');
+
+   // $('#metadata').append('<tr><th>My Image</th><td class="stampImageHolder"></td></tr>');
+    self.renderMyStamp($('.nonescrollable'), regionData, pageid);
+    $('.nonescrollable').append('<div class="facevalues"></div>');
+    var facevaluesuniques = [];
+    $('#propertiesBody').append('<div class="scrollable"><ul id="possibles"></ul></div>');
+    stampsData.forEach(function (val, i) {
+      $('#possibles').append('<li id="' + val.ID + '" data-value="'+val.FaceValue+'"><a class="matchStampLink" href="#" id="' + val.ID + '">' + val.FaceValue+ ':'+val.Colors + ':' + val.Country + ':' + val.stamp_name + '</a></li>');
+      if (facevaluesuniques[val.FaceValue]){
+
+      } else {
+        facevaluesuniques[val.FaceValue]=val.FaceValue;
+        $('.facevalues').append('<span id="'+val.FaceValue+'" class="facevalue">'+val.FaceValue+'</div>');
+      }
+    });
+   
+    $('.facevalue').click(function (e) {
+      var clickedFaceValue = e.target.id;
+      $('li').each(function(idx) {
+        if ($(this).data('value') != clickedFaceValue) {
+          $(this).css('display','none');
+        } else {
+          $(this).css('display','inherit');
+        }
+      });
+    });
+
+    $('.matchStampLink').click(function (e) {
+     // alert("link selected=" + e.target.id);
+      self.updateStampForRegion(pageid, albumPageRegionId, e.target.id);
+      //this.renderImageMapForPage(this.pagesList[this.currentPage]);
+      //self.getAlbumData(self.pagesList[self.currentPage]);
+      self.renderStampPanel(self, albumPageRegionId, e.target.id,pageid);
+    });
+    $('.propertiesPanel').css ('display','inline-block');
+  }
+
+  convertMarkup (input) {
+    if (input)
+      return input.replace(/\[b\]/g,"<b>").replace(/\[\/b\]/g,"</b>");
+    else
+      return "";
+  }
+  renderStampPanel(self, albumPageRegionId, stampid, pageid) {
     $('#propertiesBody').empty();
     $('#propertiesBody').css('overflow-y','auto');
     $('#propertiesBody').append('<table id="metadata"></table>');
@@ -661,61 +711,19 @@ const StampGallery = () => {
       images.push('https://rimell.cc/stampAlbum/img/C' + i + '.jpg')
     }
   }
+
+
+  
+  
+  
+  
+  
+  
   for (let i = 0, len = images.length; i < len; i++) { // format images in carousel_images format (dictionary)
     carousel_images.push({'original': images[i], 'thumbnail': images[i]})
   }
-
-  const task = [
-    {
-      id: 1,
-      description: "Lazy Loading",
-      time: '',
-      completed: false,
-    }
-  ]
-
-  const [tasks, setTasks] = useState(task);
-  const toggleTask = (id) => {
-      setTasks(
-        tasks.map( task => {
-          if (task.id === id) {
-            task.completed = !task.completed;
-          }
-          if (task.completed === true) {
-            localStorage.setItem('LazyLoading',true)
-          } else {
-            localStorage.setItem('LazyLoading',false)
-          }
-          return task;
-        })
-      )
-    }
-
   return (
-    <Row>
-      <Col className="pr-grid-col" xs={12} lg={20}>
-        <Row className="gutter mb-4">
-          <Col className="mb-4 mb-md-0" xs={12} md={6}>
-            <Widget className="widget-p-24">
-            <ImageGallery items={carousel_images} showFullScreenButton={false} showIndex={true} slideDuration={100} showPlayButton={false} lazy_loading={lazyLoadingCheck()} />
-            </Widget>
-          </Col>
-          <Col xs={12} md={6}>
-            <Widget className="">
-              <div className="d-flex widget-p-24">
-                <div className="headline-3 d-flex align-items-center">
-                  Panel
-                </div>
-                <div className={s.widgetContentBlock}>
-                  <LazyLoading tasks={task} toggleTask={toggleTask}/>
-                </div>
-                
-              </div>
-            </Widget>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <ImageGallery items={carousel_images} showFullScreenButton={false} showIndex={true} slideDuration={100} showPlayButton={false} lazy_loading={lazyLoadingCheck()} />
   )
 }
 
