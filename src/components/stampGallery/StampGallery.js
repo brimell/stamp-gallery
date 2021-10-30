@@ -271,7 +271,7 @@ class StampData {
 
 }
 
-class Panels {
+class Panels { // does rendering for most things
 
 
   constructor() {
