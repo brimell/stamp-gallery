@@ -301,24 +301,20 @@ table > thead > tr > th {
   }
 }
 
-.table-hover {
-  tbody tr {
-    @include hover() {
-      background-color: $violet;
-      td {
-        color: white;
-      }
-    }
-  }
-}
+// .table-hover {
+//   tbody tr {
+//     @include hover() {
+//       background-color: $violet;
+//       td {
+//         color: white;
+//       }
+//     }
+//   }
+// }
 
 .pagination {
   justify-content: center;
   align-items: center;
-}
-
-.pagination-with-border {
-
 }
 
 .page-link {
@@ -494,9 +490,9 @@ input[type='checkbox'] .styled:checked + label::after {
     color: $base-dark-gray;
     @include border-top-radius($nav-tabs-border-radius);
 
-    @include hover-focus() {
-      border-color: $nav-tabs-link-hover-border-color;
-    }
+    // @include hover-focus() {
+    //   border-color: $nav-tabs-link-hover-border-color;
+    // }
 
     &.disabled {
       color: $base-dark-gray;
