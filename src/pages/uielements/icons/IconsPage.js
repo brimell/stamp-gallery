@@ -27,7 +27,7 @@ const IconsPage = () => {
   }
 
   return (
-    <Widget className="widget-p-md">
+    <Widget className="widget-p-24">
       <Nav tabs className="mb-4">
         <NavItem>
           <NavLink

@@ -87,7 +87,7 @@
   padding: 24px 36px;
   border-radius: 8px;
 
-  @media (max-width: breakpoint-max(sm)) {
+  @media (max-width: breakpoint-max(sm)) { //sm = ≥576px
     padding: 20px 24px;
   }
 
@@ -99,7 +99,7 @@
 }
 
 .responsiveWidget {
-  @media (max-width: breakpoint-max(lg)) {
+  @media (max-width: breakpoint-max(lg)) { // lg = ≥992px
     padding: 24px 12px;
   }
 }
@@ -107,7 +107,7 @@
 .countryContainer {
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: 80vh;
+  max-height: 432px;
 }
 
 a {

@@ -48,7 +48,7 @@ const Notifications = function () {
     <div>
       <Row className="gutter mb-4">
         <Col xs={12} lg={4}>
-          <Widget className="widget-p-md">
+          <Widget className="widget-p-24">
             <div className="headline-2">Layout Options</div>
             <div className={s.widgetText}>There are few position options available for notifications. You can click any of them to change notifications position:</div>
             <div className={s.layoutContainer}>
@@ -85,7 +85,7 @@ const Notifications = function () {
           </Widget>
         </Col>
         <Col xs={12} lg={4} className="mt-4 mt-lg-0">
-          <Widget className="widget-p-md">
+          <Widget className="widget-p-24">
             <div className="headline-2">Notification Types</div>
             <div className={s.widgetText}>Different types of notifications for lots of use cases. Custom classes are also supported.</div>
             <div className=" headline-3 mt-4 mb-2">Message with icon</div>
@@ -119,7 +119,7 @@ const Notifications = function () {
           </Widget>
         </Col>
         <Col xs={12} lg={4} className="mt-4 mt-lg-0">
-          <Widget className="widget-p-md">
+          <Widget className="widget-p-24">
             <div className="headline-2">Notification Types</div>
             <div className={s.widgetText}>Different types of notifications for lots of use cases. Custom classes are also supported.</div>
             <Code>{`
@@ -142,7 +142,7 @@ const Notifications = function () {
       </Row>
       <Row className="gutter mb-4">
         <Col xs={12} lg={6}>
-          <Widget className="widget-p-md">
+          <Widget className="widget-p-24">
             <div className="headline-2 mb-4">Notification Types Examples</div>
             <Notification
               type="info"
@@ -163,7 +163,7 @@ const Notifications = function () {
           </Widget>
         </Col>
         <Col xs={12} lg={6} className="mt-4 mt-lg-0">
-          <Widget className="widget-p-md">
+          <Widget className="widget-p-24">
             <div className="headline-2 mb-4">Notifications Types Examples, without icons</div>
             <Notification
               type="info"

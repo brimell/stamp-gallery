@@ -10,7 +10,7 @@ const Typography = () => {
     <div>
       <Row>
         <Col className="mb-4" xs={12}>
-          <Widget className="widget-p-lg">
+          <Widget className="widget-p-24-36">
             <Row>
               <Col xs={12} sm={6} xl={3} className="mb-5 mb-sm-0">
                 <p className="headline-3 mb-4 text-muted">Headlines</p>
@@ -59,7 +59,7 @@ const Typography = () => {
       <Row className="gutter">
         <Col className="mb-4" xs={12} lg={6}>
           <Widget
-            className="widget-p-lg"
+            className="widget-p-24-36"
             title={
               <p className="headline-2 mb-0 text-muted">Semi-Bold Headings </p>
             }
@@ -74,7 +74,7 @@ const Typography = () => {
         </Col>
         <Col className="mb-4" xs={12} lg={6}>
           <Widget
-            className="widget-p-lg"
+            className="widget-p-24-36"
             title={
               <p className="headline-2 mb-0 text-muted">Bold Headings </p>
             }
@@ -91,7 +91,7 @@ const Typography = () => {
       <Row>
         <Col className="mb-4">
           <Widget
-            className="widget-p-lg"
+            className="widget-p-24-36"
             title={
               <p className="headline-2 mb-0 text-muted">Body Text</p>
             }
@@ -103,7 +103,7 @@ const Typography = () => {
       <Row>
         <Col xs={12} lg={6}>
           <Widget
-            className="widget-p-lg"
+            className="widget-p-24-36"
             title={
               <p className="headline-2 mb-0 text-muted">Body Text</p>
             }

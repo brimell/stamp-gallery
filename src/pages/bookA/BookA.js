@@ -57,14 +57,14 @@ const BookA = () => {
       <Col className="pr-grid-col" xs={12} lg={20}>
         <Row className="gutter mb-4">
           <Col className="mb-4 mb-md-0" xs={12} md={6}>
-            <Widget className="widget-p-md">
+            <Widget className="widget-p-24">
             <StampGallery />
               
             </Widget>
           </Col>
           <Col xs={12} md={6}>
             <Widget className="">
-              <div className="d-flex widget-p-md">
+              <div className="d-flex widget-p-24">
                 <div className="headline-3 d-flex align-items-center">
                   Panel
                 </div>

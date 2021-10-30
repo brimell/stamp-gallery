@@ -22,7 +22,7 @@
     display: none;
   }
 
-  @media (max-width: breakpoint-max(sm)) {
+  @media (max-width: breakpoint-max(sm)) { //sm = ≥576px
     position: static !important;
     width: auto;
     margin: 12px 24px 0;
@@ -47,7 +47,7 @@
 //}
 
 .sidebarOpen {
-  @media (max-width: breakpoint-max(sm)) {
+  @media (max-width: breakpoint-max(sm)) { //sm = ≥576px
     height: 276px;
   }
 }

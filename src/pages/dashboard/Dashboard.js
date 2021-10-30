@@ -25,8 +25,8 @@ const Dashboard = () => {
   //     .map((checkbox, index) => index === id ? !checkbox : checkbox ))
   // }
 
-  const books = [['A','500','/books/a'],['B','200','/books/b'],['C','300','/books/c']];
-  const totalStamps = 1000
+  const books = [['A','109','/books/a'],['B','47','/books/b'],['C','33','/books/c']];
+  const totalStamps = 109 + 47 + 33
   // let flags = []
 
   // const URL_PATH = "https://www.rimell.cc/stampAlbum/php/";
@@ -58,7 +58,7 @@ const Dashboard = () => {
   // }
   // getKnownCountries()
   // console.log(flags)
-  let flags = [
+  let flags = [ // collapse this
     "Aden (1) ",
     "Afghanistan (6) ",
     "Algeria (5) ",
@@ -283,7 +283,7 @@ const Dashboard = () => {
         <Col className="pr-grid-col" xs={12} lg={8}>
           <Row className="gutter mb-4">
             <Col className="mb-4 mb-md-0" xs={12} md={6}>
-            <Widget className="widget-p-md">
+            <Widget className="widget-p-24">
                 <div className="d-flex justify-content-between">
                   <div className="headline-3 d-flex align-items-center">Books</div>
                 </div>
@@ -307,7 +307,7 @@ const Dashboard = () => {
             </Col>
             <Col xs={12} md={6}>
             <Widget className="">
-                <div className="d-flex justify-content-between widget-p-md">
+                <div className="d-flex justify-content-between widget-p-24">
                   <div className="headline-3 d-flex align-items-center">Globe</div>
                 </div>
               </Widget>
@@ -317,7 +317,7 @@ const Dashboard = () => {
           <Row className="gutter mb-4">
             <Col xs={12}>
               <Widget className="widget-p-none">
-              <div className="d-flex justify-content-between widget-p-md">
+              <div className="d-flex justify-content-between widget-p-24">
                   <div className="headline-3 d-flex align-items-center">Debug Console</div>
                 </div>
               </Widget>
@@ -325,7 +325,7 @@ const Dashboard = () => {
           </Row>
           <Row className="gutter">
             <Col className="mb-4 mb-xl-0" xs={6} sm={6} xl={3}>
-              <Widget className="widget-p-sm">
+              <Widget className="widget-p-16">
                 <div className={s.smallWidget}>
                   <div className="d-flex mb-4">
                     {/* <img className="py-1 mr-2 img-fluid" src={heartRed} alt="..." /> */}
@@ -335,13 +335,13 @@ const Dashboard = () => {
                     </div>
                   </div>
                   <div>
-                    <Progress color="secondary-red" className={`progress-xs ${s.mutedPink}`} value="75" />
+                    <Progress color="secondary-red" className={`progress-xs ${s.mutedPink}`} value="20" />
                   </div>
                 </div>
               </Widget>
             </Col>
             <Col className="mb-4 mb-xl-0" xs={6} sm={6} xl={3}>
-              <Widget className="widget-p-sm">
+              <Widget className="widget-p-16">
                 <div className={s.smallWidget}>
                   <div className="d-flex mb-4">
                     {/* <img className="py-1 mr-2 img-fluid" src={heartYellow} alt="..." /> */}
@@ -357,7 +357,7 @@ const Dashboard = () => {
               </Widget>
             </Col>
             <Col xs={6} sm={6} xl={3}>
-              <Widget className="widget-p-sm">
+              <Widget className="widget-p-16">
                 <div className={s.smallWidget}>
                   <div className="d-flex mb-4">
                     {/* <img className="py-1 mr-2 img-fluid" src={heartTeal} alt="..." /> */}
@@ -373,7 +373,7 @@ const Dashboard = () => {
               </Widget>
             </Col>
             <Col xs={6} sm={6} xl={3}>
-              <Widget className="widget-p-sm">
+              <Widget className="widget-p-16">
                 <div className={s.smallWidget}>
                   <div className="d-flex mb-4">
                     {/* <img className="py-1 mr-2 img-fluid" src={heartViolet} alt="..." /> */}
@@ -391,7 +391,7 @@ const Dashboard = () => {
           </Row>
         </Col>
         <Col className="mt-4 mt-lg-0 pl-grid-col" xs={12} lg={4}>
-          <Widget className="widget-p-lg">
+          <Widget className="widget-p-24" style={{maxHeight: '52vh'}}>
           <div className="d-flex justify-content-between" style={{marginBottom: "30px"}}>
             <div className="headline-3 d-flex align-items-center">Country</div>
           </div>
