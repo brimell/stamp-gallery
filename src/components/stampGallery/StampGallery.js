@@ -215,7 +215,7 @@ class StampData {
           const pagesStr = val.Public_Note.substring(1,val.Public_Note.length-1);
          // console.log(val.Public_Note + "->"+pagesStr);
           let pages = pagesStr.split(" ");
-          pages.forEach (function (pageid, idx) {
+          pages.forEach (function (pageid, idx) { // page id originates here
             var pageStamps = self.stampsByPage.get(pageid);
             if (pageStamps == null) {
               pageStamps = [];
