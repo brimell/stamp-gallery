@@ -323,7 +323,7 @@ class Panels {
     $('.facevalue').on('click', function (e) {
       var clickedFaceValue = e.target.id;
       $('li').each(function(idx) {
-        if ($(this).data('value') != clickedFaceValue) {
+        if ($(this).data('value') !== clickedFaceValue) {
           $(this).css('display','none');
         } else {
           $(this).css('display','inherit');
@@ -408,7 +408,7 @@ class Panels {
   renderNotMyStamp ( holder, stamp, message = "") {
     const targetImageWidth = 400;
     const targetImageHeight = 200;
-    holder.append('<div><div id="'+stamp.ID+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-repeat: no-repeat; background-image: url(img/none-stamps.jpg)">'+message+':'+stamp.stamp_name+':'+stamp.FaceValue+'</div></div>');
+    holder.append('<div><div id="'+stamp.ID+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-repeat: no-repeat; background-image: url(https://rimell.cc/stampAlbum/img/none-stamps.jpg)">'+message+':'+stamp.stamp_name+':'+stamp.FaceValue+'</div></div>');
     
   }
   renderMyStamp(holder, regionData, pageid) {
@@ -470,7 +470,7 @@ class Panels {
       const backgroundSize = Math.round(originalWidth * widthRatio);
 
 
-      holder.append('<div><div id="'+regionData.albumPageRegionId+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-size: ' +backgroundSize + 'px; background-position: -'+targetAlpha+'px -'+targetBeta+'px; background-repeat: no-repeat; background-image: url(img/' + pageid + '.jpg)"></div><div>'+pageid+'</div></div>');
+      holder.append('<div><div id="'+regionData.albumPageRegionId+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-size: ' +backgroundSize + 'px; background-position: -'+targetAlpha+'px -'+targetBeta+'px; background-repeat: no-repeat; background-image: url(https://rimell.cc/stampAlbum/img/' + pageid + '.jpg)"></div><div>'+pageid+'</div></div>');
     
   }
  
@@ -478,7 +478,7 @@ class Panels {
     var albumRegion = self.model.getDataForRegionId(stampRegionId);
     var matchingStampId = albumRegion.stampid;
 
-     if (matchingStampId == 0)
+     if (matchingStampId === 0)
         self.renderFindStampPanel(stampRegionId,pageid);
      else
         self.renderStampPanel(self, stampRegionId, matchingStampId, albumRegion.pageid);

@@ -50,7 +50,7 @@ class Panels { // does rendering for most things
           }
           $('#metadata').append('<tr><th>Country</th><td><span class="flag_icon" style="' + style + '"></span>' + val.Country + '</td></tr>');
           $('#metadata').append('<tr><th>Name</th><td>' + val.stamp_name + '</td></tr>');
-          $('#metadata').append('<tr><th>Description</th><td style="white-space: pre-line">' + this.convertMarkup(val.Description) + '</td></tr>');
+          $('#metadata').append('<tr><th>Description</th><td style="white-space: pre-line">' + val.Description + '</td></tr>');
           $('#metadata').append('<tr><th>Series</th><td>' + val.Series + '</td></tr>');
           $('#metadata').append('<tr><th>Catalog Codes</th><td>SG : ' +  val.codes.getStanleyGibbonsCode() + '</td></tr>');
           $('#metadata').append('<tr><th>Issued On</th><td>' + val.Issued_on + '</td></tr>');
@@ -152,7 +152,7 @@ class Panels { // does rendering for most things
         const backgroundSize = Math.round(originalWidth * widthRatio);
   
   
-        holder.append('<div><div id="'+regionData.albumPageRegionId+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-size: ' +backgroundSize + 'px; background-position: -'+targetAlpha+'px -'+targetBeta+'px; background-repeat: no-repeat; background-image: url(img/' + pageid + '.jpg)"></div><div>'+pageid+'</div></div>');
+        holder.append('<div><div id="'+regionData.albumPageRegionId+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-size: ' +backgroundSize + 'px; background-position: -'+targetAlpha+'px -'+targetBeta+'px; background-repeat: no-repeat; background-image: url(https://rimell.cc/stampAlbum/img/' + pageid + '.jpg)"></div><div>'+pageid+'</div></div>');
       
     }
    

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import './imageGallery.scss'
 import ImageGallery from 'react-image-gallery';
-import slideToIndex from 'react-image-gallery/src/ImageGallery'
 import $ from 'jquery';
 import LazyLoading from './lazyLoading/LazyLoading'
 import {
@@ -82,7 +81,6 @@ const StampGallery = () => {
       var panels = new Panels();
       new SwiperClass(panels);
     });
-    slideToIndex(2)
     
   return (
 

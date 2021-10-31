@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import ImageGallery from 'react-image-gallery';
 
-class SwiperClass {
 
+class SwiperClass {
 
     constructor(panels) {
         this.panels = panels;
@@ -17,7 +17,6 @@ class SwiperClass {
       this.initalRenderContainer("A1");
     }
     }
-
     logEvent(eventTxt) {
         console.log(eventTxt);
         var logDiv = $(".navbar-dropdown");
@@ -35,7 +34,7 @@ class SwiperClass {
 
         sessionStorage.setItem('curr_page',pageid)
         // ImageGallery.slideToIndex(pageid.replace(['A','B','C'],''))
-
+        self.postSlideRenderSteps(self, pageid);
         $(window).on('resize', function () {
             var pageid = sessionStorage.getItem('curr_page')
             self.logEvent("resize triggered. pageid="+pageid);
@@ -56,9 +55,9 @@ class SwiperClass {
         }
 
     postSlideRenderSteps(self, pageid) {
-        $("image-gallery-image").removeAttr('usemap');
+        $(".image-gallery-image").removeAttr('usemap');
         this.renderImageMapForPage(pageid);
-        $('.image-gallery-image' + pageid).attr('usemap', "#albumpage");
+        $('.image-gallery-image').attr('usemap', "#albumpage");
         this.logEvent("Added usemap attr to img:.img"+pageid);
         
         // var pageStatusData = this.model.countUnmatchedStampsOnPage(this.model.getCurrentPage());
@@ -83,7 +82,7 @@ class SwiperClass {
         $('map').remove();
         if (imageMapData) {
             const imgHeight = imageMapData[0].imgHeight;
-            const newHeight = $('.image-gallery-image'+pageid).height();
+            const newHeight = $('.image-gallery-image').height();
             this.scaleRatio = newHeight / imgHeight;
             self.logEvent("renderImageMap: newHeight="+newHeight+": imgHeight="+imgHeight+": scale=" + self.scaleRatio);
 
