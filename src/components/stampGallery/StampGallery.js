@@ -19,11 +19,11 @@ import Panels from './components/Panels'
 import SwiperClass from './components/SwiperClass'
 
 function lazyLoadingCheck() {
-  if (localStorage.getItem('lazy_loading') === true) {
-    return true
-  } else {
-    localStorage.setItem('lazy_loading', false)
+  if (localStorage.getItem('lazy_loading') === false) {
     return false
+  } else {
+    localStorage.setItem('lazy_loading', true)
+    return true
   }
 }
 
