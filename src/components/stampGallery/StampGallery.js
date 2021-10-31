@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import Widget from "../Widget/Widget";
 import s from "./lazyLoading/LazyLoading.module.scss"
-
+import rwdImageMaps from "https://raw.githubusercontent.com/stowball/jQuery-rwdImageMaps/master/jquery.rwdImageMaps.js"
 
 function lazyLoadingCheck() {
   if (localStorage.getItem('lazy_loading') === true) {
@@ -36,7 +36,7 @@ class Codes {
 
     codeList.forEach(function (val, idx) {
       var codeTuple = val.split(":");
-      if (codeTuple.length ==2)
+      if (codeTuple.length === 2)
         self.codes.set(codeTuple[0].trim(),codeTuple[1].trim());
       else
         console.log("unknown code:"+val + ": in code str="+codeStr);
