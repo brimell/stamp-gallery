@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 import './imageGallery.scss'
+import '../../pages/tables/components/TaskContainer/TaskContainer.module.scss'
 import ImageGallery from 'react-image-gallery';
 import $ from 'jquery';
-import LazyLoading from './lazyLoading/LazyLoading'
+import TaskContainer from "../../pages/tables/components/TaskContainer/TaskContainer";
 import {
   Col,
   Row,
@@ -76,14 +77,16 @@ const StampGallery = () => {
         })
       )
     }
+    
     var panels = new Panels();
     $(function () {
       new SwiperClass(panels);
     });
-
+    
     const imageGallery = useRef()
     $( ".image-gallery-image" ).ready(function () {
-      console.log(imageGallery.current);
+      // console.log(imageGallery.current);
+      sessionStorage.setItem('curr_page',window.location.hash.substring(1, 10).replace('/books/','').toUpperCase() + (imageGallery.current.state.currentIndex + 1))
       // imageGallery.current.slideToIndex(5)
       // imageGallery.current.props.onSlide = onSlide
     })
@@ -123,7 +126,7 @@ const StampGallery = () => {
                   Panel
                 </div>
                 <div className={s.widgetContentBlock}>
-                  <LazyLoading tasks={task} toggleTask={toggleTask}/>
+                  <TaskContainer tasks={task} toggleTask={toggleTask}/>
                 </div>
                 <form>
                   <input id="fetchColnectImages" type="checkbox" name="fetchColnectImages" value="true" />Fetch Colnect Images 

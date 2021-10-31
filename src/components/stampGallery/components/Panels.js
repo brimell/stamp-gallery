@@ -72,7 +72,7 @@ class Panels { // does rendering for most things
               url: self.URL_PATH + 'getStampImageURL.php?stamppage=' + encodeURI(val.Link),
               async: true,
               success: function (data) {
-                $('#metadata').append('<tr><th>source Image</th><td><img src="' + data.seconddata + '"/></td></tr>');
+                $('#metadata').append('<tr><th>source Image</th><td><img src=https://rimell.cc/stampAlbum/' + data.seconddata + '></td></tr>');
               }
             });
           }
@@ -86,7 +86,53 @@ class Panels { // does rendering for most things
        }
   
     }
+
+    renderFindStampPanel(albumPageRegionId, pageid) {
+      const self = this;
+      $('#propertiesBody').empty();
+      var stampsData = this.model.getStampsPage(pageid);
   
+      stampsData.sort(this.compareByFaceValue);
+      
+      var regionData = this.model.getDataForRegionId(albumPageRegionId);
+      $('#propertiesBody').append('<div class="nonescrollable"></div>');
+  
+     // $('#metadata').append('<tr><th>My Image</th><td class="stampImageHolder"></td></tr>');
+      self.renderMyStamp($('.nonescrollable'), regionData, pageid);
+      $('.nonescrollable').append('<div class="facevalues"></div>');
+      var facevaluesuniques = [];
+      $('#propertiesBody').append('<div class="scrollable"><ul id="possibles"></ul></div>');
+      stampsData.forEach(function (val, i) {
+        $('#possibles').append('<li id="' + val.ID + '" data-value="'+val.FaceValue+'"><a class="matchStampLink" href="#" id="' + val.ID + '">' + val.FaceValue+ ':'+val.Colors + ':' + val.Country + ':' + val.stamp_name + '</a></li>');
+        if (facevaluesuniques[val.FaceValue]){
+  
+        } else {
+          facevaluesuniques[val.FaceValue]=val.FaceValue;
+          $('.facevalues').append('<span id="'+val.FaceValue+'" class="facevalue">'+val.FaceValue+'</div>');
+        }
+      });
+     
+      $('.facevalue').on('click', function (e) {
+        var clickedFaceValue = e.target.id;
+        $('li').each(function(idx) {
+          if ($(this).data('value') !== clickedFaceValue) {
+            $(this).css('display','none');
+          } else {
+            $(this).css('display','inherit');
+          }
+        });
+      });
+  
+      $('.matchStampLink').on('click', function (e) {
+       // alert("link selected=" + e.target.id);
+        self.updateStampForRegion(pageid, albumPageRegionId, e.target.id);
+        //this.renderImageMapForPage(this.pagesList[this.currentPage]);
+        //self.getAlbumData(self.pagesList[self.currentPage]);
+        self.renderStampPanel(self, albumPageRegionId, e.target.id,pageid);
+      });
+      $('.propertiesPanel').css ('display','inline-block');
+    }
+
     renderNotMyStamp ( holder, stamp, message = "") {
       const targetImageWidth = 400;
       const targetImageHeight = 200;
