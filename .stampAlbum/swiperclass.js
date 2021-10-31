@@ -12,7 +12,7 @@ class SwiperClass {
         var self = this;
 
 
-        $('#albumA').click(function () {
+        $('#albumA').on('click', function () {
             $('.countryList').css("display","none");
             $('.swiper').css("display","inline-block");
             self.initalRenderContainer("A1")});

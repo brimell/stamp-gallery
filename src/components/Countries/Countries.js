@@ -273,7 +273,7 @@ class Panels {
 
     this.backQueue = [];
 
-    // $('#back').click(function (e) {
+    // $('#back').on('click', function (e) {
     //   console.log("back queue length="+self.backQueue.length);
     //   var backRender = self.backQueue.pop();
     //   if (backRender)
@@ -282,7 +282,7 @@ class Panels {
     //     $(this).css("display","none");
     // });
     
-    $('#countyListOption').click(function () {self.getKnownCountries()});
+    $('#countyListOption').on('click', function () {self.getKnownCountries()});
   }
   
   compareByFaceValue( a, b ) {
@@ -320,7 +320,7 @@ class Panels {
       }
     });
    
-    $('.facevalue').click(function (e) {
+    $('.facevalue').on('click', function (e) {
       var clickedFaceValue = e.target.id;
       $('li').each(function(idx) {
         if ($(this).data('value') != clickedFaceValue) {
@@ -331,7 +331,7 @@ class Panels {
       });
     });
 
-    $('.matchStampLink').click(function (e) {
+    $('.matchStampLink').on('click', function (e) {
      // alert("link selected=" + e.target.id);
       self.updateStampForRegion(pageid, albumPageRegionId, e.target.id);
       //this.renderImageMapForPage(this.pagesList[this.currentPage]);
@@ -351,7 +351,7 @@ class Panels {
     $('#propertiesBody').empty();
     $('#propertiesBody').css('overflow-y','auto');
     $('#propertiesBody').append('<table id="metadata"></table>');
-    $('#changeSelection').click(function (e) {
+    $('#changeSelection').on('click', function (e) {
       self.renderFindStampPanel(albumPageRegionId, pageid);
     });
     var val = self.model.getDataForRegionId(albumPageRegionId).stampRecord;
@@ -503,7 +503,7 @@ class Panels {
       var stampCount = self.model.stampsCount[element.country];
       $('.countryList').append(`<div class="country"><div class="flag_item" id="${element.id}" draggable="false" style="${style}"></div><div>${element.country} (${element.count} / ${stampCount})</div></div>`);
     });
-    $('.flag_item').click(function (e) {
+    $('.flag_item').on('click', function (e) {
       //var data = self.model.getListOfRegionsByCountry(e.target.id)
       self.backQueue.push(function() {
         self.renderCountryList(data);
@@ -549,7 +549,7 @@ class Panels {
       }
     });
     $('#seriesList').append(`<div id="ALL" class="series" data-minyear="2021" data-maxyear="1830" data-countryid="${lastCountryId}">ALL</div>`);
-    $( ".series" ).click(function (e) {
+    $( ".series" ).on('click', function (e) {
       const seriesName = $(this).attr("id");
       const countryId = $(this).attr("data-countryid");
 
@@ -620,7 +620,7 @@ class Panels {
       
 
     });
-    $('.stampImage').click(function (e) {
+    $('.stampImage').on('click', function (e) {
       e.preventDefault();
       self.clickOnStamp(self, e.target.id);
     });

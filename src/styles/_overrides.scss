@@ -602,3 +602,7 @@ font-weight: 600;
   display: none;
   }
 }
+
+[role = "button"] {
+  cursor: default;
+}

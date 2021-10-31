@@ -35,7 +35,7 @@ const Dashboard = () => {
   //     // var stampCount = this.model.stampsCount[element.country];
   //     flags.push(String(element.country) + ' (' + String(element.count) + ') ');
   //   });
-  //   // $('.flag_item').click(function (e) {
+  //   // $('.flag_item').on('click', function (e) {
   //   //   //var data = self.model.getListOfRegionsByCountry(e.target.id)
   //   //   self.backQueue.push(function() {
   //   //     self.renderCountryList(data);
