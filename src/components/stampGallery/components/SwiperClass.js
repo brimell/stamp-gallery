@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import ImageGallery from 'react-image-gallery';
 
 
 class SwiperClass {
@@ -33,13 +32,17 @@ class SwiperClass {
         // handle.text(pageid);
 
         sessionStorage.setItem('curr_page',pageid)
-        // ImageGallery.slideToIndex(pageid.replace(['A','B','C'],''))
         self.postSlideRenderSteps(self, pageid);
         $(window).on('resize', function () {
             var pageid = sessionStorage.getItem('curr_page')
             self.logEvent("resize triggered. pageid="+pageid);
             self.postSlideRenderSteps(self, pageid);
         });
+        $(window).on('hash', function () {
+            var pageid = sessionStorage.getItem('curr_page')
+            self.logEvent("resize triggered. pageid="+pageid);
+            self.postSlideRenderSteps(self, pageid);
+        })
 
  
       }
@@ -55,10 +58,13 @@ class SwiperClass {
         }
 
     postSlideRenderSteps(self, pageid) {
-        $(".image-gallery-image").removeAttr('usemap');
-        this.renderImageMapForPage(pageid);
-        $('.image-gallery-image').attr('usemap', "#albumpage");
-        this.logEvent("Added usemap attr to img:.img"+pageid);
+        $( ".image-gallery-image" ).ready(function () {
+            $(".image-gallery-image").removeAttr('usemap');
+            self.renderImageMapForPage(pageid);
+            $('.image-gallery-image').attr('usemap', "#albumpage");
+            self.logEvent("Added usemap attr to img:.img"+pageid);
+          })
+        
         
         // var pageStatusData = this.model.countUnmatchedStampsOnPage(this.model.getCurrentPage());
         // $('#statusData').text(pageStatusData.join("/"));
@@ -77,13 +83,13 @@ class SwiperClass {
     renderImageMapForPage(pageid) {
         var self = this;
         //this.scaleRatio = this.calculateImageScaleRatio();
-        
-        var imageMapData = this.model.getAlbumRegionsForPage(pageid);
+        $('.image-gallery-image').ready(function () {
+        var imageMapData = self.model.getAlbumRegionsForPage(pageid);
         $('map').remove();
         if (imageMapData) {
             const imgHeight = imageMapData[0].imgHeight;
             const newHeight = $('.image-gallery-image').height();
-            this.scaleRatio = newHeight / imgHeight;
+            self.scaleRatio = newHeight / imgHeight;
             self.logEvent("renderImageMap: newHeight="+newHeight+": imgHeight="+imgHeight+": scale=" + self.scaleRatio);
 
             $('#root').append('<map name="albumpage"></map>');
@@ -109,6 +115,8 @@ class SwiperClass {
                 });
            // });
         }
+        })
+        
     }
 
     /* Set the width of the sidebar to 250px (show it) */

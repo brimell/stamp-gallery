@@ -76,11 +76,24 @@ const StampGallery = () => {
         })
       )
     }
-
+    var panels = new Panels();
     $(function () {
-      var panels = new Panels();
       new SwiperClass(panels);
     });
+
+    const imageGallery = useRef()
+    $( ".image-gallery-image" ).ready(function () {
+      console.log(imageGallery.current);
+      // imageGallery.current.slideToIndex(5)
+      // imageGallery.current.props.onSlide = onSlide
+    })
+    const onSlide = () => {
+      var swiperCall = new SwiperClass(panels)
+      sessionStorage.setItem('curr_page',window.location.hash.substring(1, 10).replace('/books/','').toUpperCase() + (imageGallery.current.state.currentIndex + 1))
+      var pageid = sessionStorage.getItem('curr_page')
+      console.log(pageid);
+      swiperCall.postSlideRenderSteps(swiperCall, pageid)
+    }
     
   return (
 
@@ -90,7 +103,16 @@ const StampGallery = () => {
         <Row className="gutter mb-4">
           <Col className="mb-4 mb-md-0" xs={12} md={6}>
             <Widget className="widget-p-24">
-            <ImageGallery items={carousel_images} showFullScreenButton={false} showIndex={true} slideDuration={100} showPlayButton={false} lazy_loading={lazyLoadingCheck()} />
+            <ImageGallery 
+            items={carousel_images} 
+            showFullScreenButton={false} 
+            showIndex={true} 
+            slideDuration={100} 
+            showPlayButton={false} 
+            lazy_loading={lazyLoadingCheck()}
+            ref={imageGallery}
+            onSlide={onSlide}
+             />
             </Widget>
           </Col>
           <Col xs={12} md={6}>
