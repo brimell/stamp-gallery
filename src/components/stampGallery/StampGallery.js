@@ -301,19 +301,19 @@ class Panels { // does rendering for most things
     $('#propertiesBody').empty();
     $('#propertiesBody').css('overflow-y','auto');
     $('#propertiesBody').append('<table id="metadata"></table>');
-    $('#changeSelection').click(function (e) {
+    $('#changeSelection').on('click', function (e) {
       self.renderFindStampPanel(albumPageRegionId, pageid);
     });
     var val = self.model.getDataForRegionId(albumPageRegionId).stampRecord;
     //self.stampsData.forEach(function (val, i) {
       if (val != null) {
 
-        $('#metadata').append('<tr><th>ID</th><td>' + val.ID + '</td></tr>');
+        $('#metadata').append('<tr><th>ID</th><td>' + val.ID + '</td></tr>'); // metadata is added in line 303
         var flag_icon = val.flag_image;
         var style = 'background-image: url(https://www.rimell.cc/stampAlbum/flags/' + flag_icon + ');';
         if (flag_icon == null) 
           flag_icon = "32px_question_mark.png";
-        else if (flag_icon == 'flags32y.png') {
+        else if (flag_icon === 'flags32y.png') {
           style = style + " background-position: "+val.image_x+"px " + val.image_y+"px;\"";
         }
         $('#metadata').append('<tr><th>Country</th><td><span class="flag_icon" style="' + style + '"></span>' + val.Country + '</td></tr>');
@@ -349,8 +349,8 @@ class Panels { // does rendering for most things
        
           
          $('#metadata').append('<tr><th>My Image</th><td class="stampImageHolder"></td></tr>');
-         self.renderMyStamp($('.stampImageHolder'), regionData, pageid);
-         $('.propertiesPanel').css ('display','inline-block');
+         self.renderMyStamp($('.stampImageHolder'), regionData, pageid); // stampImageHolder gets added in this js ^^^
+        //  $('.propertiesPanel').css ('display','inline-block');
      }
 
   }
@@ -428,7 +428,7 @@ class Panels { // does rendering for most things
     var albumRegion = self.model.getDataForRegionId(stampRegionId);
     var matchingStampId = albumRegion.stampid;
 
-     if (matchingStampId == 0)
+     if (matchingStampId === 0)
         self.renderFindStampPanel(stampRegionId,pageid);
      else
         self.renderStampPanel(self, stampRegionId, matchingStampId, albumRegion.pageid);
@@ -702,14 +702,20 @@ const StampGallery = () => {
           </Col>
           <Col xs={12} md={6}>
             <Widget className="">
-              <div className="d-flex widget-p-24">
+              <div className="widget-p-24 propertiesPanel">
                 <div className="headline-3 d-flex align-items-center">
                   Panel
                 </div>
                 <div className={s.widgetContentBlock}>
                   <LazyLoading tasks={task} toggleTask={toggleTask}/>
                 </div>
-                
+                <form>
+                  <input id="fetchColnectImages" type="checkbox" name="fetchColnectImages" value="true" />Fetch Colnect Images 
+                  <input id="changeSelection" type="button" name="action" value="Select" />
+                </form>
+                <div id="propertiesBody">
+
+                </div>
               </div>
             </Widget>
           </Col>
