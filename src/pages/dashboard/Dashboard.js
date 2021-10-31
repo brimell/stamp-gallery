@@ -395,8 +395,8 @@ const Dashboard = () => {
           <div className="d-flex justify-content-between" style={{marginBottom: "30px"}}>
             <div className="headline-3 d-flex align-items-center">Country</div>
           </div>
-          <div className={s.countryContainer}>
-          {flags.map((flag) =>
+          <div className={s.countryContainer + 'countryList'}>
+          {/* {flags.map((flag) =>
                   <div key={uuidv4()} className="d-flex">
                     <img className={s.image} src='' alt="" />
                     <div className={s.userInfo}>
@@ -404,7 +404,7 @@ const Dashboard = () => {
                       <p className="body-3 muted"></p>
                     </div>
                   </div>
-                )}
+                )} */}
           </div>
           
             

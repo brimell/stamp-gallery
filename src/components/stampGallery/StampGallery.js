@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import Widget from "../Widget/Widget";
 import s from "./lazyLoading/LazyLoading.module.scss"
+import sd from "../../pages/dashboard/Dashboard.module.scss";
 import rwdImageMaps from "https://raw.githubusercontent.com/stowball/jQuery-rwdImageMaps/master/jquery.rwdImageMaps.js"
 
 function lazyLoadingCheck() {
@@ -361,11 +362,11 @@ class Panels { // does rendering for most things
     holder.append('<div><div id="'+stamp.ID+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-repeat: no-repeat; background-image: url(img/none-stamps.jpg)">'+message+':'+stamp.stamp_name+':'+stamp.FaceValue+'</div></div>');
     
   }
-  renderMyStamp(holder, regionData, pageid) {
+  renderMyStamp(holder, regionData, pageid) { // does everything for the holder (display of stamp on properties panel)
     // Take the width from the CSS, so it varies between desktop and mobile device.
-    // var csswidth = $('.targetImageWidth').css('width');
-    // console.log('css width='+csswidth.substring(0,csswidth.length-2));
-    // const targetImageWidth = parseInt(csswidth.substring(0,csswidth.length-2));
+    var csswidth = "400px"
+    console.log('css width='+csswidth.substring(0,csswidth.length-2));
+    const targetImageWidth = parseInt(csswidth.substring(0,csswidth.length-2));
     var myX = parseInt(regionData.x1);
     var myMaxX = parseInt(regionData.x1);
     if (myX > parseInt(regionData.x2)) 
@@ -403,21 +404,21 @@ class Panels { // does rendering for most things
 
       var width = myMaxX - myX;
       width = width * Math.sign(width);
-      // const widthRatio = targetImageWidth / width;
+      const widthRatio = targetImageWidth / width;
       
       var height = myMaxY - myY;
       height = height * Math.sign(height);
 
-      // const stampRatio =  height/ width;
-      // const targetImageHeight= Math.round(targetImageWidth * stampRatio);
+      const stampRatio =  height/ width;
+      const targetImageHeight= Math.round(targetImageWidth * stampRatio);
 
 
 
-      // const targetAlpha = Math.round(myX * widthRatio);
-      // const targetBeta = Math.round(myY * widthRatio);
+      const targetAlpha = Math.round(myX * widthRatio);
+      const targetBeta = Math.round(myY * widthRatio);
 
-      // const originalWidth = regionData.imgWidth;
-      // const backgroundSize = Math.round(originalWidth * widthRatio);
+      const originalWidth = regionData.imgWidth;
+      const backgroundSize = Math.round(originalWidth * widthRatio);
 
 
       holder.append('<div><div id="'+regionData.albumPageRegionId+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-size: ' +backgroundSize + 'px; background-position: -'+targetAlpha+'px -'+targetBeta+'px; background-repeat: no-repeat; background-image: url(img/' + pageid + '.jpg)"></div><div>'+pageid+'</div></div>');
@@ -438,8 +439,6 @@ class Panels { // does rendering for most things
   
   renderCountryList (data) {
     var self = this;
-    $('.swiper').css("display","none");
-    $('.propertiesPanel').css("display","none");
     $('.countryList').empty();
     const TARGET_FLAG_SIZE = 60;
     const SOURCE_FLAG_SIZE = 32;
@@ -447,13 +446,13 @@ class Panels { // does rendering for most things
     const backgroundSize = 640 * imgRatio;
     data.forEach ((element, i) => {
       var style = 'background-image: url(https://www.rimell.cc/stampAlbum/flags/' + element.flag_image + ');';
-      if (element.flag_image == 'flags32y.png') {
+      if (element.flag_image === 'flags32y.png') {
         style = style + " background-position: "+(parseInt(element.image_x)*imgRatio)+"px " + (parseInt(element.image_y)*imgRatio)+"px; background-size: "+backgroundSize+"px; ";
       }
       var stampCount = self.model.stampsCount[element.country];
-      $('.countryList').append(`<div class="country"><div class="flag_item" id="${element.id}" draggable="false" style="${style}"></div><div>${element.country} (${element.count} / ${stampCount})</div></div>`);
+      $('.countryList').append(`<div class="country d-flex"><div class="flag_item ${sd.image}" id="${element.id}" draggable="false" style="${style}"></div><div class="${sd.userInfo}" ><p class="headline-3" >${element.country}</p><p class="body-3 muted" >(${element.count} / ${stampCount})</p></div>`);
     });
-    $('.flag_item').click(function (e) {
+    $('.flag_item').on('click', function (e) {
       //var data = self.model.getListOfRegionsByCountry(e.target.id)
       self.backQueue.push(function() {
         self.renderCountryList(data);
@@ -467,9 +466,7 @@ class Panels { // does rendering for most things
   renderSeriesList (data) {
     var self = this;
     
-    $('.swiper').css("display","none");
-    $('.propertiesPanel').css("display","none");
-    $('#back').css("display","inline-block");
+    // $('#back').css("display","inline-block");
 
 
     $('.countryList').empty();
