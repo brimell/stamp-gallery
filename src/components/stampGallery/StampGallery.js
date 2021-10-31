@@ -363,9 +363,9 @@ class Panels { // does rendering for most things
   }
   renderMyStamp(holder, regionData, pageid) {
     // Take the width from the CSS, so it varies between desktop and mobile device.
-    var csswidth = $('.targetImageWidth').css('width');
-    console.log('css width='+csswidth.substring(0,csswidth.length-2));
-    const targetImageWidth = parseInt(csswidth.substring(0,csswidth.length-2));
+    // var csswidth = $('.targetImageWidth').css('width');
+    // console.log('css width='+csswidth.substring(0,csswidth.length-2));
+    // const targetImageWidth = parseInt(csswidth.substring(0,csswidth.length-2));
     var myX = parseInt(regionData.x1);
     var myMaxX = parseInt(regionData.x1);
     if (myX > parseInt(regionData.x2)) 
@@ -403,21 +403,21 @@ class Panels { // does rendering for most things
 
       var width = myMaxX - myX;
       width = width * Math.sign(width);
-      const widthRatio = targetImageWidth / width;
+      // const widthRatio = targetImageWidth / width;
       
       var height = myMaxY - myY;
       height = height * Math.sign(height);
 
-      const stampRatio =  height/ width;
-      const targetImageHeight= Math.round(targetImageWidth * stampRatio);
+      // const stampRatio =  height/ width;
+      // const targetImageHeight= Math.round(targetImageWidth * stampRatio);
 
 
 
-      const targetAlpha = Math.round(myX * widthRatio);
-      const targetBeta = Math.round(myY * widthRatio);
+      // const targetAlpha = Math.round(myX * widthRatio);
+      // const targetBeta = Math.round(myY * widthRatio);
 
-      const originalWidth = regionData.imgWidth;
-      const backgroundSize = Math.round(originalWidth * widthRatio);
+      // const originalWidth = regionData.imgWidth;
+      // const backgroundSize = Math.round(originalWidth * widthRatio);
 
 
       holder.append('<div><div id="'+regionData.albumPageRegionId+'" class="stampImage" style="display:block; width:'+targetImageWidth+'px; height:'+targetImageHeight+'px; background-size: ' +backgroundSize + 'px; background-position: -'+targetAlpha+'px -'+targetBeta+'px; background-repeat: no-repeat; background-image: url(img/' + pageid + '.jpg)"></div><div>'+pageid+'</div></div>');
