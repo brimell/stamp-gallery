@@ -1,16 +1,17 @@
-// -- React and related libs
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import { HashRouter } from "react-router-dom";
 
-// -- Custom Components
 import LayoutComponent from "./components/Layout/Layout";
 import ErrorPage from "./pages/error/ErrorPage";
 
-// -- Third Party Libs
 import { ToastContainer } from "react-toastify";
 
-// -- Component Styles
+import {ThemeProvider} from "styled-components";
+import { GlobalStyles } from "./components/globalStyles";
+import { lightTheme, darkTheme } from "./components/Themes"
+import theme from './components/currTheme'
+
 import "./styles/app.scss";
 
 const PrivateRoute = ({ dispatch, component, ...rest }) => {
@@ -21,7 +22,9 @@ const PrivateRoute = ({ dispatch, component, ...rest }) => {
 
 const App = (props) => {
   return (
-    <div>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <>
+      <GlobalStyles/>
       <ToastContainer/>
       <HashRouter>
         <Switch>
@@ -32,7 +35,8 @@ const App = (props) => {
           <Route path='*' exact={true} render={() => <Redirect to="/error" />} />
         </Switch>
       </HashRouter>
-    </div>
+      </>
+    </ThemeProvider>
   );
 }
 
