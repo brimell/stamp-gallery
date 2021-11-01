@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 
+import {useDarkMode} from "../useDarkMode"
+
+import Toggle from '../Toggler'
 import {
   Navbar,
   Nav,
@@ -45,7 +48,8 @@ const Header = (props) => {
       props.dispatch(openSidebar());
     }
   }
-
+  const [theme, themeToggler, mountedComponent] = useDarkMode();
+  
   
   return (
     <Navbar className={`${s.root} d-print-none`}>
@@ -90,6 +94,7 @@ const Header = (props) => {
 
           </DropdownMenu>
         </Dropdown>
+        <Toggle theme={theme} toggleTheme={themeToggler} />
       </Nav>
     </Navbar>
   )

@@ -7,10 +7,10 @@ import ErrorPage from "./pages/error/ErrorPage";
 
 import { ToastContainer } from "react-toastify";
 
+import  {useDarkMode} from "./components/useDarkMode"
 import {ThemeProvider} from "styled-components";
 import { GlobalStyles } from "./components/globalStyles";
 import { lightTheme, darkTheme } from "./components/Themes"
-import theme from './components/currTheme'
 
 import "./styles/app.scss";
 
@@ -21,8 +21,14 @@ const PrivateRoute = ({ dispatch, component, ...rest }) => {
   }
 
 const App = (props) => {
+
+  const [theme, themeToggler, mountedComponent] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  if(!mountedComponent) return <div/>
+
+
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode}>
       <>
       <GlobalStyles/>
       <ToastContainer/>
