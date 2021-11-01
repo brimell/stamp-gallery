@@ -81,11 +81,14 @@ const Tables = function () {
       tasks.map( task => {
         if (task.id === id) {
           task.completed = !task.completed;
+          console.log(task)
         }
         return task;
       })
     )
   }
+
+  console.log('test')
 
   return (
     <div>

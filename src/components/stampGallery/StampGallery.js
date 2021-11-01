@@ -3,7 +3,6 @@ import './imageGallery.scss'
 import '../../pages/tables/components/TaskContainer/TaskContainer.module.scss'
 import ImageGallery from 'react-image-gallery';
 import $ from 'jquery';
-import TaskContainer from "../../pages/tables/components/TaskContainer/TaskContainer";
 import {
   Col,
   Row,
@@ -13,8 +12,8 @@ import {
   // DropdownItem,
   // UncontrolledDropdown
 } from "reactstrap";
+import Checkbox from "@material-ui/core/Checkbox";
 import Widget from "../Widget/Widget";
-import s from "./lazyLoading/LazyLoading.module.scss"
 import Panels from './components/Panels'
 import SwiperClass from './components/SwiperClass'
 
@@ -52,31 +51,20 @@ const StampGallery = () => {
     carousel_images.push({'original': images[i], 'thumbnail': images[i]})
   }
 
-  const task = [
-    {
-      id: 1,
-      description: "Lazy Loading",
-      time: '',
-      completed: false,
-    }
-  ]
+  // const task = [
+  //   {
+  //     id: 1,
+  //     description: "Lazy Loading",
+  //     time: '',
+  //     completed: lazyLoadingCheck(),
+  //   }
+  // ]
 
-  const [tasks, setTasks] = useState(task);
-  const toggleTask = (id) => {
-      setTasks(
-        tasks.map( task => {
-          if (task.id === id) {
-            task.completed = !task.completed;
-          }
-          if (task.completed === true) {
-            localStorage.setItem('LazyLoading',true)
-          } else {
-            localStorage.setItem('LazyLoading',false)
-          }
-          return task;
-        })
-      )
-    }
+    const [checked, setChecked] = useState();
+
+    const handleChange = event => {
+      setChecked(event.target.checked);
+    };
     
     var panels = new Panels();
     $(function () {
@@ -85,7 +73,7 @@ const StampGallery = () => {
     
     const imageGallery = useRef()
     $( ".image-gallery-image" ).ready(function () {
-      // console.log(imageGallery.current);
+      console.log(imageGallery.current);
       sessionStorage.setItem('curr_page',window.location.hash.substring(1, 10).replace('/books/','').toUpperCase() + (imageGallery.current.state.currentIndex + 1))
       // imageGallery.current.slideToIndex(5)
       // imageGallery.current.props.onSlide = onSlide
@@ -113,6 +101,7 @@ const StampGallery = () => {
             slideDuration={100} 
             showPlayButton={false} 
             lazy_loading={lazyLoadingCheck()}
+            lazyLoad={lazyLoadingCheck()}
             ref={imageGallery}
             onSlide={onSlide}
              />
@@ -125,8 +114,12 @@ const StampGallery = () => {
                 <div className="headline-3 d-flex align-items-center">
                   Panel
                 </div>
-                <div className={s.widgetContentBlock}>
-                  <TaskContainer tasks={task} toggleTask={toggleTask}/>
+                <div className='widgetContentBlock'>
+                  <Checkbox
+                    checked={checked}
+                    onChange={handleChange}
+                    inputProps={{ "aria-label": "checkbox" }}
+                  />
                 </div>
                 <form>
                   <input id="fetchColnectImages" type="checkbox" name="fetchColnectImages" value="true" />Fetch Colnect Images 
