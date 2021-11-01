@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
+import $ from 'jquery';
 
+import LogEvent from "./components/logEvent";
 import {
   Navbar,
   Nav,
@@ -87,7 +89,8 @@ const Header = (props) => {
           </DropdownToggle>
           <DropdownMenu end className="navbar-dropdown notifications-dropdown" style={{ width: "340px" }}>
             <DropdownItem><span><strong>Debug Panel</strong></span></DropdownItem>
-
+            <div id='logEvent' onChange={console.log($('#logEvent'))} style={{display: 'none'}}></div>
+            <LogEvent />
           </DropdownMenu>
         </Dropdown>
       </Nav>

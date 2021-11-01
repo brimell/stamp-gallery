@@ -17,11 +17,9 @@ class SwiperClass {
     }
     }
     logEvent(eventTxt) {
-        console.log(eventTxt);
-        var logDiv = $(".navbar-dropdown");
-        logDiv.append(`<button type="button" tabindex="0" role="menuitem" class="dropdown-item"><span>${eventTxt}</span></button>`)
+        var logDiv = $("#logEvent");
+        logDiv.append(eventTxt)
     }
-
     initalRenderContainer(pageid = 'A1') {
         var self = this
         this.model.pagesList = []
@@ -40,7 +38,7 @@ class SwiperClass {
         });
         $(window).on('hash', function () {
             var pageid = sessionStorage.getItem('curr_page')
-            self.logEvent("resize triggered. pageid="+pageid);
+            self.logEvent("change in url triggered. pageid="+pageid);
             self.postSlideRenderSteps(self, pageid);
         })
 
@@ -58,11 +56,23 @@ class SwiperClass {
         }
 
     postSlideRenderSteps(self, pageid) {
-        $( ".image-gallery-image" ).ready(function () {
+        pageid = sessionStorage.getItem('curr_page')
+        // $( ".image-gallery-image" ).ready(function () {
+        //     $('.image-gallery-image').each(function (index) {
+        //         if (this.src === 'https://rimell.cc/stampAlbum/img/' + pageid + '.jpg') {
+        //             console.log(this.src)
+        //             $(".image-gallery-image").removeAttr('usemap');
+        //             self.renderImageMapForPage(pageid);
+        //             $('.image-gallery-image').attr('usemap', "#albumpage");
+        //             self.logEvent("Added usemap attr to img:.img"+pageid);
+        //         }  
+        //     })
+        //   })
+        document.getElementsByClassName("image-gallery-image").addEventListener("load",function () {
             $(".image-gallery-image").removeAttr('usemap');
-            self.renderImageMapForPage(pageid);
-            $('.image-gallery-image').attr('usemap', "#albumpage");
-            self.logEvent("Added usemap attr to img:.img"+pageid);
+                self.renderImageMapForPage(pageid);
+                $('.image-gallery-image').attr('usemap', "#albumpage");
+                self.logEvent("Added usemap attr to img:.img"+pageid);
           })
         
         
@@ -82,7 +92,8 @@ class SwiperClass {
 
     renderImageMapForPage(pageid) {
         var self = this;
-        //this.scaleRatio = this.calculateImageScaleRatio();
+        self.logEvent('rendering image map for page '  + pageid);
+        //this.scaleRatio = this.calculateImageScaleRatio();       
         $('.image-gallery-image').ready(function () {
         var imageMapData = self.model.getAlbumRegionsForPage(pageid);
         $('map').remove();
